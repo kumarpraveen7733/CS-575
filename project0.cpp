@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define NUMT	        1 
+#define NUMT	        4 
 #define SIZE       	10000	// you decide
 #define NUMTRIES        13	// you decide
 
@@ -33,16 +33,11 @@ main( )
 	        #pragma omp parallel for
 	        for( int i = 0; i < SIZE; i++ )
 	      {
-								                                                                                                                                C[i] = A[i] * B[i];
-						                                                                                                                                                }
-	                                                                                                                                 double time1 = omp_get_wtime( );
-	                                                                                                                                double megaMults = (double)SIZE/(time1-time0)/1000000.;
-	                                                                                                                                  if( megaMults > maxMegaMults )
-	                                                                                                                              maxMegaMults = megaMults;
-	                                                                                                                            }
+		C[i] = A[i] * B[i];		                                                                                      }                                                                                                                       double time1 = omp_get_wtime( );
+	      double megaMults = (double)SIZE/(time1-time0)/1000000.;
+	      if( megaMults > maxMegaMults )                                                                                                    maxMegaMults = megaMults;
+	                                                                                                                          }
 	                                                                                                                           printf( "Peak Performance = %8.2lf MegaMults/Sec\n", maxMegaMults );
 	                                                                                                                       	// note: %lf stands for "long float", which is how printf prints a "double"
-	                                                                                                              		//        %d stands for "decimal integer", not "double"
-	
-							                                                                                                                                                                                                                                        		        return 0;
-	 							                                                                                                                                                                                                                                        		        }
+	                                                                                                              		//        %d stands for "decimal integer", not "dou
+	                                                                                                              		   return 0;                                                                                                                                                                                                                           		        }
